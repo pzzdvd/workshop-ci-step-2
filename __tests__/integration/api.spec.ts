@@ -61,6 +61,8 @@ test('add a TODO', async () => {
   ]);
 });
 
+
+
 test('edit a TODO', async () => {
   await editTodo({
     id: "2",
@@ -171,6 +173,42 @@ test('uncomplete a TODO', async () => {
       text: "Test 4",
       done: false,
       priority: "MEDIUM"
+    }
+  ]);
+});
+
+test('add a TODO with PRIORITY', async () => {
+  await addTodo({
+    id: "5",
+    text: "Test 5",
+    priority: "LOW"
+  });
+  const actual = await getAllTodos();
+
+  expect(actual).toEqual([
+    {
+      id: "1",
+      text: "Test 1",
+      done: false,
+      priority: "MEDIUM"
+    },
+    {
+      id: "3",
+      text: "Test 3",
+      done: false,
+      priority: "MEDIUM"
+    },
+    {
+      id: "4",
+      text: "Test 4",
+      done: false,
+      priority: "MEDIUM"
+    },
+    {
+      id: "5",
+      text: "Test 5",
+      done: false,
+      priority: "LOW"
     }
   ]);
 });
