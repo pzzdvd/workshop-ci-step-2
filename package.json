@@ -10,7 +10,7 @@
     "json-server": "json-server --watch data/data.json --port 3001",
     "test-e2e": "cp ./data.empty.json data/data.json && npx playwright test && cp ./data.empty.json data/data.jsont",
     "test-e2e-ui": "cp ./data.empty.json data/data.json && npx playwright test --ui && cp ./data.empty.json data/data.json",
-    "test": "cp ./data.test.json data/data.json && jest && cp ./data.empty.json data/data.json"
+    "test": "cp ./data.test.json data/data.json | jest | cp ./data.empty.json data/data.json"
   },
   "dependencies": {
     "@types/node": "18.15.11",

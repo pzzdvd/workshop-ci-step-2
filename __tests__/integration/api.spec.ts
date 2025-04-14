@@ -7,17 +7,20 @@ test('GET all TODOs', async () => {
     {
       id: "1",
       text: "Test 1",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "2",
       text: "Test 2",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "3",
       text: "Test 3",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     }
   ]);
 });
@@ -25,7 +28,8 @@ test('GET all TODOs', async () => {
 test('add a TODO', async () => {
   await addTodo({
     id: "4",
-    text: "Test 4"
+    text: "Test 4",
+    priority: "MEDIUM"
   });
   const actual = await getAllTodos();
 
@@ -33,22 +37,26 @@ test('add a TODO', async () => {
     {
       id: "1",
       text: "Test 1",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "2",
       text: "Test 2",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "3",
       text: "Test 3",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "4",
       text: "Test 4",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     }
   ]);
 });
@@ -64,22 +72,26 @@ test('edit a TODO', async () => {
     {
       id: "1",
       text: "Test 1",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "2",
       text: "Test 2 edited",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "3",
       text: "Test 3",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "4",
       text: "Test 4",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     }
   ]);
 });
@@ -93,17 +105,20 @@ test('delete a TODO', async () => {
     {
       id: "1",
       text: "Test 1",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "3",
       text: "Test 3",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "4",
       text: "Test 4",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     }
   ]);
 });
@@ -116,17 +131,20 @@ test('complete a TODO', async () => {
     {
       id: "1",
       text: "Test 1",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "3",
       text: "Test 3",
-      done: true
+      done: true,
+      priority: "MEDIUM"
     },
     {
       id: "4",
       text: "Test 4",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     }
   ]);
 });
@@ -139,17 +157,20 @@ test('uncomplete a TODO', async () => {
     {
       id: "1",
       text: "Test 1",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "3",
       text: "Test 3",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     },
     {
       id: "4",
       text: "Test 4",
-      done: false
+      done: false,
+      priority: "MEDIUM"
     }
   ]);
 });
