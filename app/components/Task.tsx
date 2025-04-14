@@ -4,7 +4,7 @@ import { ITask } from "@/types/tasks";
 import { FormEventHandler, useState } from "react";
 import { FiCheckCircle, FiCircle, FiEdit, FiTrash2 } from "react-icons/fi";
 import Modal from "./Modal";
-import { useRouter } from "next/navigation";
+import {useRouter, useSearchParams} from 'next/navigation';
 import { completeTodo, deleteTodo, editTodo, uncompleteTodo } from "@/api";
 import UpsertTaskModal from "./UpsertTaskModal";
 
@@ -13,12 +13,14 @@ interface TaskProps {
 }
 
 const Task: React.FC<TaskProps> = ({ task }) => {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
   const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false);
   const [openModalComplete, setOpenModalComplete] = useState<boolean>(false);
   const [openModalUncomplete, setOpenModalUncomplete] = useState<boolean>(false);
   const [taskToEdit, setTaskToEdit] = useState<string>(task.text ?? '');
+  const isPriorityAbilitato = searchParams.get('show_priority') === '1' ;
 
   const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -50,7 +52,7 @@ const Task: React.FC<TaskProps> = ({ task }) => {
 
   return (
     <tr key={task.id}>
-      <td className={task.done ? 'line-through text-green-200 font-bold w-full' : 'w-full'} data-testid="todo-name-label">{task.text}</td>
+      <td className={task.done ? 'line-through text-green-200 font-bold w-full' : 'w-full'} data-testid="todo-name-label">{task.text} {isPriorityAbilitato && ' | ' + task.priority}</td>
       {!task.done && <td className='flex gap-5'>
         <FiCircle
           onClick={() => setOpenModalComplete(true)}
